@@ -59,7 +59,16 @@ public class ShootSystem : MonoBehaviourPun
            // leftReload.fillAmount = 1f;
             rightReload.fillAmount = 1f;
         }
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+
     }
+
+
 
     public void MultiplayerShoot() {
         if (photonView.IsMine)

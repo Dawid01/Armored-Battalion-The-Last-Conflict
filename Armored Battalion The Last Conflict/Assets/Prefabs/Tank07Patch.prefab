@@ -6577,6 +6577,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 100
   bulletForce: 20
+  isRickochet: 0
 --- !u!82 &1925602889432487542
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11745,6 +11746,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 15
+  isRickochet: 1
 --- !u!1 &1925602890782629587
 GameObject:
   m_ObjectHideFlags: 0

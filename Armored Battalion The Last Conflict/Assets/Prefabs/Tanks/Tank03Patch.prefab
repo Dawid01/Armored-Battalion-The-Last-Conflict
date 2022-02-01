@@ -53,6 +53,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 15
+  isRickochet: 1
 --- !u!1 &51411783133784226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1246,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320106304895844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1559,6 +1561,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320106478865037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,6 +1974,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320106666731271
 GameObject:
   m_ObjectHideFlags: 0
@@ -3208,6 +3212,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320107027972874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3934,6 +3939,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320107309955701
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,6 +4032,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320107325732624
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,6 +4770,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 25
+  isRickochet: 0
 --- !u!1 &3348320107595894951
 GameObject:
   m_ObjectHideFlags: 0

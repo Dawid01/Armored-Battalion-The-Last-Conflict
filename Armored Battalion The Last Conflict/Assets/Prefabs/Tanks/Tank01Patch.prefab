@@ -1777,6 +1777,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 15
+  isRickochet: 1
 --- !u!1 &1550128845
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,6 +6333,7 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 15
+  isRickochet: 0
 --- !u!1 &6005892487081763401
 GameObject:
   m_ObjectHideFlags: 0
