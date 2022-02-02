@@ -37,6 +37,8 @@ public class TankAIMovement : MonoBehaviour
 
     bool firstHit = false;
 
+    private EnemiesPatch enemiesPatch;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -53,13 +55,23 @@ public class TankAIMovement : MonoBehaviour
                 target = FindObjectOfType<TankPatchAI>().transform;
             }
         }catch{}
-    
+
+        enemiesPatch = transform.parent.parent.GetComponent<EnemiesPatch>();
+        if (enemiesPatch)
+        {
+            enemiesPatch.enemies.Add(this);
+        }
     }
 
     void Update()
     {
         if(target){
             distanceToPlayer = Vector3.Distance(transform.position, target.position);
+            if (enemiesPatch)
+            {
+                enemiesPatch.setEnemiesTarget(target);
+                enemiesPatch = null;
+            }
             Attack();
         }else if(startTarget){
             if(startTarget.gameObject.active){
@@ -69,6 +81,10 @@ public class TankAIMovement : MonoBehaviour
 
         if(hpSystem.hp < hpSystem.maxHp && !firstHit){
             target = FindObjectOfType<TankMovement>().transform;
+            if (enemiesPatch) {
+                enemiesPatch.setEnemiesTarget(target);
+                enemiesPatch = null;
+            }
             firstHit = true;
         }
 

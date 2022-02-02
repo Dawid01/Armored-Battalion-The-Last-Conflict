@@ -6577,7 +6577,6 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 100
   bulletForce: 20
-  isRickochet: 0
 --- !u!82 &1925602889432487542
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11685,8 +11684,8 @@ MonoBehaviour:
   shakeCamera: {fileID: 8070757378261431532}
   gunBody: {fileID: 6293387766900005687}
   reloadTime: 5
-  leftReload: {fileID: 8070757377616244322}
-  rightReload: {fileID: 8070757378166579831}
+  leftReload: {fileID: 8070757378166579831}
+  rightReload: {fileID: 8070757377616244322}
   sparks: {fileID: 6940060410466343533}
   pushPower: 850
   audioSource: {fileID: 1925602889432487542}
@@ -11746,7 +11745,6 @@ MonoBehaviour:
   currentBullet: {fileID: 0}
   demage: 20
   bulletForce: 15
-  isRickochet: 1
 --- !u!1 &1925602890782629587
 GameObject:
   m_ObjectHideFlags: 0
