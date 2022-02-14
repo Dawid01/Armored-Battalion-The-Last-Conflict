@@ -14,8 +14,6 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     public float delta;
     private bool isDrag;
 
-
-
     void Start()
     {
 

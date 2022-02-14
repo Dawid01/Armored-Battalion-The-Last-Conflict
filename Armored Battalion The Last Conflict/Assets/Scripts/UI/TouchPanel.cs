@@ -30,11 +30,6 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
 
     void Update() {
 
-        // if (touchCount == 0)
-        // {
-        //     cameraY.localRotation = Quaternion.Lerp(cameraY.localRotation, Quaternion.Euler(0f, cameraY.localEulerAngles.y, cameraY.localEulerAngles.z), Time.deltaTime * 3f);
-        // }
-
         if(!isZoom){
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, fieldOfView, Time.deltaTime * 10f);
         }else{

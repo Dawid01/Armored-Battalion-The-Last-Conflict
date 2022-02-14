@@ -85,7 +85,6 @@ public class TankMovement : MonoBehaviour
                 transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(-24f, transform.localEulerAngles.y, transform.localRotation.z), 5f * Time.deltaTime);
                 moveZ = 0f;
             }else if(transform.localRotation.x * 100f > 25f){
-            // moveZ = 0f;
                 transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(24f, transform.localEulerAngles.y, transform.localRotation.z), 5f * Time.deltaTime);  
             }
             Vector3 forwardMove = transform.forward * moveZ;
@@ -94,18 +93,9 @@ public class TankMovement : MonoBehaviour
             Quaternion deltaRotation = Quaternion.Euler(new Vector3(0f, joystick.getHorizontal() * driveDirection * 60f, 0f) * Time.deltaTime * rotationSpeed);
             rb.MoveRotation(rb.rotation * deltaRotation);
             float truckScale = moveZ / speed;
-            // truck.rightTruckSpeed = (movement.normalized.z - movement.normalized.x) / 1000f * driveDirection;
-            // truck.leftTruckSpeed = (movement.normalized.z + movement.normalized.x) / 1000f * driveDirection;
-
             truck.rightTruckSpeed = ((joystick.getVertical() + joystick.getHorizontal()) / 1000f * driveDirection) * driveDirection;
             truck.leftTruckSpeed = ((joystick.getVertical() - joystick.getHorizontal()) / 1000f * driveDirection) * driveDirection;
-        
-        
-            // float x = transform.localEulerAngles.x;
-            
-            // if(x < 330f && x > 45f){
 
-            // }
         }
     }
 }

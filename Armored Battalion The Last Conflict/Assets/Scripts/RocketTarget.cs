@@ -66,8 +66,10 @@ public class RocketTarget : MonoBehaviour
 			reloadLeft.fillAmount = amount;
         }
         else {
-            reloadRight.fillAmount = 1f;
-			reloadLeft.fillAmount = 1f;
+			if (reloadRight)
+				reloadRight.fillAmount = 1f;
+			if (reloadLeft)
+				reloadLeft.fillAmount = 1f;
         }
 
 	 	foreach(RectTransform t in dynamicTargets){

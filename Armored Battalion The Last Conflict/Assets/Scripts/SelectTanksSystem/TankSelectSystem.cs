@@ -13,29 +13,20 @@ public class TankSelectSystem : MonoBehaviour
     public GameObject menuPause;
 
     private ClassicGame classicGame;
+    public SwipeTanks swipeTanks;
 
 
     public float padding = 10f;
     void Start()
     {
-        classicGame =  FindObjectOfType<ClassicGame>();
-
-        float w = tankImage.GetComponent<RectTransform>().rect.width / 2f + 50f;
+        classicGame = FindObjectOfType<ClassicGame>();
         for(int i = 0; i < tankImages.Count; i++){
             RectTransform image = Instantiate(tankImages[i], content).GetComponent<RectTransform>();
             Button btn = image.GetChild(1).GetComponent<Button>();
             btn.name = "" + i;
-            btn.onClick.AddListener(() => Select(int.Parse(btn.name)));
-
-            image.localPosition = new Vector2(w, -175f);
-            if(i < tankImages.Count - 1){
-                w += image.rect.width + padding;
-            }else{
-                w += image.rect.width / 2f;
-            }
-            
+            btn.onClick.AddListener(() => Select(int.Parse(btn.name)));            
         }
-        content.GetComponent<RectTransform>().sizeDelta = new Vector2(w + 50f, content.GetComponent<RectTransform>().rect.height);
+        swipeTanks.enabled = true;
     }
 
 
@@ -45,7 +36,16 @@ public class TankSelectSystem : MonoBehaviour
 
     }
 
-    void Select(int index){
+    public void Select(){
+        PlayerPrefs.SetInt("menu_tank", swipeTanks.selectedIndex);
+        tanks[swipeTanks.selectedIndex].SetActive(true);
+        Destroy(gameObject);
+        menuPause.SetActive(true);
+        classicGame.StartGame();
+    }
+
+    void Select(int index)
+    {
         PlayerPrefs.SetInt("menu_tank", index);
         tanks[index].SetActive(true);
         Destroy(gameObject);

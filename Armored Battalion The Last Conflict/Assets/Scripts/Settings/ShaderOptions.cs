@@ -28,7 +28,6 @@ public class ShaderOptions : MonoBehaviour
             PlayerPrefs.SetInt("HeightValue", height);
 
         }
-        Debug.Log(width + " : " + height);
 
         Screen.SetResolution(width, height, true);
         if(PlayerPrefs.GetInt("shaders", 1) == 0){
