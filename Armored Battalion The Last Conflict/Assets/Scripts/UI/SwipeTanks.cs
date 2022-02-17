@@ -17,9 +17,12 @@ public class SwipeTanks : MonoBehaviour
     private bool start = false;
 
     public int selectedIndex = 0;
+    public Button selectButton;
+    private TankSelectSystem tankSelectSystem;
 
     private void OnEnable()
     {
+        tankSelectSystem = FindObjectOfType<TankSelectSystem>();
         position = new float[transform.childCount];
         distance = 1f / (position.Length - 1f);
         distanceThreshold = distance / 2f;
@@ -34,6 +37,11 @@ public class SwipeTanks : MonoBehaviour
 
     private void Update()
     {
+        if (tankSelectSystem.selectionPoints >= tankSelectSystem.selectTankImages[selectedIndex].cost)
+            selectButton.interactable = true;
+        else
+            selectButton.interactable = false;
+
         if (start)
         {
             if (Input.GetMouseButton(0))

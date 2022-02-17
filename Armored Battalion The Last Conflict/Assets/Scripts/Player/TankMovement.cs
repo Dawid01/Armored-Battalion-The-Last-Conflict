@@ -37,8 +37,11 @@ public class TankMovement : MonoBehaviour
         engineAudio = GetComponent<AudioSource>();
         engineAudio.clip = engineStop;
         engineAudio.Play();
-        if(photonView || !photonView.IsMine){
-            this.enabled = false;
+        if(photonView ){
+            if (!photonView.IsMine)
+            {
+                this.enabled = false;
+            }
          }
        
     }

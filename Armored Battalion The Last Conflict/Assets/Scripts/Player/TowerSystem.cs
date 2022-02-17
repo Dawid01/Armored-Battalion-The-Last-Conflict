@@ -76,7 +76,7 @@ public class TowerSystem : MonoBehaviour
 
         if (Physics.CapsuleCast(p1, p2, 0.5f * 0.3f, gun.forward, out hit, 10, shootDetectionMask))
         {
-            if (hit.distance <= 10f)
+            if (hit.distance <= 10f && bulletCollision_UI)
             {
                 Vector3 collisionPosition = gun.position + gun.forward * hit.distance;
                 Vector2 ViewportPositionCollision = Camera.main.WorldToViewportPoint(collisionPosition);
@@ -93,7 +93,10 @@ public class TowerSystem : MonoBehaviour
         }
         else
         {
-            bulletCollision_UI.gameObject.SetActive(false);
+            if (bulletCollision_UI)
+            {
+                bulletCollision_UI.gameObject.SetActive(false);
+            }
 
         }
 
