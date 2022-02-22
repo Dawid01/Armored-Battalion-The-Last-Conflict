@@ -39,6 +39,11 @@ public class TankSelectSystem : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        
+    }
+
     public void Select(){
         SelectTankImage selectTankImage = selectTankImages[swipeTanks.selectedIndex];
         int newSelectionPoints = selectionPoints - selectTankImage.cost;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public abstract class ClassicGame : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public abstract class ClassicGame : MonoBehaviour
         defeatCanvas.SetActive(true);
         pauseButton.SetActive(false);
         playerCanvas.SetActive(false);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public abstract void StartGame();
