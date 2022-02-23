@@ -23,12 +23,18 @@ public class TankSelectSystem : MonoBehaviour
     [HideInInspector]
     public List<SelectTankImage> selectTankImages = new List<SelectTankImage>();
 
+    private int minTankCost = int.MaxValue;
+
+
     void Start()
     {
         classicGame = FindObjectOfType<ClassicGame>();
         for(int i = 0; i < tankImages.Count; i++){
             GameObject image = Instantiate(tankImages[i], content);
             selectTankImages.Add(image.GetComponent<SelectTankImage>());
+            if (selectTankImages[i].cost < minTankCost) {
+                minTankCost = selectTankImages[i].cost;
+            }
         }
         swipeTanks.enabled = true;
         selectionPointsText.text = "selection points: " + selectionPoints;
@@ -44,6 +50,14 @@ public class TankSelectSystem : MonoBehaviour
         
     }
 
+    public bool isGameOver() {
+
+        if (minTankCost > selectionPoints)
+            return true;
+        else
+            return false;
+    }
+
     public void Select(){
         SelectTankImage selectTankImage = selectTankImages[swipeTanks.selectedIndex];
         int newSelectionPoints = selectionPoints - selectTankImage.cost;
@@ -57,6 +71,7 @@ public class TankSelectSystem : MonoBehaviour
             selectedTank.transform.parent = null;
             gameObject.SetActive(false);
             menuPause.SetActive(true);
+            menuPause.transform.GetChild(0).gameObject.SetActive(true);
             classicGame.StartGame();
         }
     }
@@ -64,7 +79,7 @@ public class TankSelectSystem : MonoBehaviour
 
     public void NextTry() {
         gameObject.SetActive(true);
-        menuPause.SetActive(true);
+        //menuPause.SetActive(true);
         Destroy(selectedTank);
     }
 

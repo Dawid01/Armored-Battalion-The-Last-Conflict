@@ -7,8 +7,10 @@ public abstract class ClassicGame : MonoBehaviour
 {
 
     public GameObject winCanvas;
+    public GameObject tryAgainCanvas;
     public GameObject defeatCanvas;
     public GameObject pauseButton;
+    public TankSelectSystem tankSelectSystem;
 
     public int gameType;
     [HideInInspector] public GameObject playerCanvas;
@@ -19,7 +21,7 @@ public abstract class ClassicGame : MonoBehaviour
 
     void Start()
     {
-        
+        //tankSelectSystem = FindObjectOfType<TankSelectSystem>();
 
     }
 
@@ -39,6 +41,15 @@ public abstract class ClassicGame : MonoBehaviour
         defeatCanvas.SetActive(true);
         pauseButton.SetActive(false);
         playerCanvas.SetActive(false);
+        if (tankSelectSystem.isGameOver())
+        {
+            defeatCanvas.SetActive(true);
+            tryAgainCanvas.SetActive(false);
+        }
+        else {
+            defeatCanvas.SetActive(false);
+            tryAgainCanvas.SetActive(true);
+        }
     }
 
     public void Restart()
