@@ -9,39 +9,25 @@ public class GraphicsOptions : MonoBehaviour {
 
 
     public GameObject[] stamps;
-    private float resolutionValue = 1f;
-    int width = 0;
-    int height = 0;
-    //public Text resolutionText;
-    //public Slider resolutionSlider;
+
+    public TextMeshProUGUI resolutionText;
 
     public TMP_Dropdown graphicsDropDown;
     public UnityEngine.Rendering.RenderPipelineAsset[] renderLevels;
+    public Slider resolutionSlider;
+
+
 
 
     void Start () {
 
         graphicsDropDown.value = QualitySettings.GetQualityLevel();
-
-        width = PlayerPrefs.GetInt("WidthValue", 0);
-        height = PlayerPrefs.GetInt("HeightValue", 0);
-        if (width == 0)
-        {
-            width = Display.main.systemWidth;
-            height = Display.main.systemHeight;
-            PlayerPrefs.SetInt("WidthValue", width);
-            PlayerPrefs.SetInt("HeightValue", height);
-
-        }
-        Debug.Log(width + " : " + height);
-
-        Screen.SetResolution(width, height, true);
-
         setGraphics(PlayerPrefs.GetInt("Graphics", 1));
-        // resolutionValue = PlayerPrefs.GetFloat("ResolutionValue", 10);
-        // resolutionSlider.value = resolutionValue;
-        // resolutionText.text = "Resolution: " + (int)(resolutionValue / 10f * width) + " X " + (int)(resolutionValue / 10f * height);
-
+        float scale = PlayerPrefs.GetFloat("ResolutionScale", 1f);
+        float width = Display.main.systemWidth * scale;
+        float height = Display.main.systemHeight * scale;
+        Screen.SetResolution((int)width, (int)height, true);
+        resolutionSlider.value = scale;
     }
     
 
@@ -78,10 +64,21 @@ public class GraphicsOptions : MonoBehaviour {
 
     }
 
-    // public void ChangeResolutionValue(Slider resolution) {
+     public void ChangeResolutionValue(Slider resolution) {
 
-    //     resolutionValue = resolution.value;
-    //     resolutionText.text = "Resolution: " + (int)(resolutionValue / 10f * width) + " X " + (int)(resolutionValue / 10f * height);
-    //     PlayerPrefs.SetFloat("ResolutionValue", resolutionValue);
-    // }
+         float resolutionScale = resolution.value;
+         resolutionText.text = "Resolution " + (int)(resolution.value * 100f) + "%";
+         PlayerPrefs.SetFloat("ResolutionScale", resolutionScale);
+         float width = Display.main.systemWidth * resolutionScale;
+         float height = Display.main.systemHeight * resolutionScale;
+         Screen.SetResolution((int)width, (int)height, true);
+         //resolutionSlider.value = resolutionScale;
+
+    }
+
+    public void UpdateResolutionValue(Slider resolution)
+    {
+        float resolutionScale = resolution.value;
+        resolutionText.text = "Resolution " + (int)(resolution.value * 100f) + "%";
+    }
 }

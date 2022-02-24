@@ -23,9 +23,11 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
     public bool isZoom = false;
 
     float lastTimeClick = -100f;
+    private float sensitive = 1f;
 
     private void Start() {
         cam = cameraY.GetChild(0).GetChild(0).GetComponent<Camera>();
+        sensitive = 2f - PlayerPrefs.GetFloat("ResolutionScale", 1f);
     }
 
     void Update() {
@@ -57,7 +59,7 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
         }
         deltaY = oldPos.y - firstPonter.position.y;
        
-        float newCamerRotX = cameraY.eulerAngles.x + (deltaY / 6) * 1.33f;
+        float newCamerRotX = cameraY.eulerAngles.x + (deltaY / 6) * 1.33f * sensitive;
         if (newCamerRotX > 180 && newCamerRotX < 360 - upRotClamp){
             newCamerRotX = 360 - upRotClamp;
         }
@@ -65,7 +67,7 @@ public class TouchPanel : MonoBehaviour, IDragHandler, IPointerUpHandler, IPoint
             newCamerRotX = downRotClamp;
         }
         cameraY.localRotation = Quaternion.Euler(newCamerRotX, 0f, 0f); 
-        cameraPath.rotation = Quaternion.Euler(0f, cameraPath.eulerAngles.y - (deltaX / 6) * 1.33f, 0f);
+        cameraPath.rotation = Quaternion.Euler(0f, cameraPath.eulerAngles.y - (deltaX / 6) * 1.33f * sensitive, 0f);
         oldPos = firstPonter.position;
 
     }
