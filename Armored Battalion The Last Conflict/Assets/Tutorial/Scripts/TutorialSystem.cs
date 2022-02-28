@@ -12,7 +12,10 @@ public class TutorialSystem : MonoBehaviour
 
     void Start()
     {
-        
+        float scale = PlayerPrefs.GetFloat("ResolutionScale", 1f);
+        float width = Display.main.systemWidth * scale;
+        float height = Display.main.systemHeight * scale;
+        Screen.SetResolution((int)width, (int)height, true);
     }
 
     void Update()

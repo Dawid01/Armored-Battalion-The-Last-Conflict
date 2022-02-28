@@ -13,7 +13,7 @@ public class DestroyAllEnemies : ClassicGame
     public GameObject targets;
 
     void Start()
-    {   
+    {
         gameType = 1; 
         enemies = FindObjectsOfType<TankAIMovement>();   
         enemiesCount = enemies.Length;

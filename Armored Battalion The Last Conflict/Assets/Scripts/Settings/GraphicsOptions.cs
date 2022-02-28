@@ -13,6 +13,8 @@ public class GraphicsOptions : MonoBehaviour {
     public TextMeshProUGUI resolutionText;
 
     public TMP_Dropdown graphicsDropDown;
+    public TMP_Dropdown fpsDropDown;
+    public Toggle showFPSToggle;
     public UnityEngine.Rendering.RenderPipelineAsset[] renderLevels;
     public Slider resolutionSlider;
 
@@ -28,6 +30,26 @@ public class GraphicsOptions : MonoBehaviour {
         float height = Display.main.systemHeight * scale;
         Screen.SetResolution((int)width, (int)height, true);
         resolutionSlider.value = scale;
+        int fpsLimit = PlayerPrefs.GetInt("LimitFPS", 30);
+        switch (fpsLimit) {
+            case 30:
+                fpsDropDown.value = 0;
+                break;
+            case 60:
+                fpsDropDown.value = 1;
+                break;
+            case 120:
+                fpsDropDown.value = 2;
+                break;
+        }
+
+        if (PlayerPrefs.GetInt("ShowFPS", 1) == 1)
+        {
+            showFPSToggle.isOn = true;
+        }
+        else {
+            showFPSToggle.isOn = false;
+        }
     }
     
 
@@ -80,5 +102,29 @@ public class GraphicsOptions : MonoBehaviour {
     {
         float resolutionScale = resolution.value;
         resolutionText.text = "Resolution " + (int)(resolution.value * 100f) + "%";
+    }
+
+    public void ChangeLimitOfFPS() {
+        switch (fpsDropDown.value)
+        {
+            case 0:
+                PlayerPrefs.SetInt("LimitFPS", 30);
+                break;
+            case 1:
+                PlayerPrefs.SetInt("LimitFPS", 60);
+                break;
+            case 2:
+                PlayerPrefs.SetInt("LimitFPS", 120);
+                break;
+        }      
+    }
+
+    public void ShowFPS() {
+
+        if (showFPSToggle.isOn == true)
+            PlayerPrefs.SetInt("ShowFPS", 1);
+        else
+            PlayerPrefs.SetInt("ShowFPS", 0);
+
     }
 }

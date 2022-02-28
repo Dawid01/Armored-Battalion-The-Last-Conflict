@@ -28,6 +28,11 @@ public class TankSelectSystem : MonoBehaviour
 
     void Start()
     {
+        float scale = PlayerPrefs.GetFloat("ResolutionScale", 1f);
+        float width = Display.main.systemWidth * scale;
+        float height = Display.main.systemHeight * scale;
+        Screen.SetResolution((int)width, (int)height, true);
+
         classicGame = FindObjectOfType<ClassicGame>();
         for(int i = 0; i < tankImages.Count; i++){
             GameObject image = Instantiate(tankImages[i], content);
