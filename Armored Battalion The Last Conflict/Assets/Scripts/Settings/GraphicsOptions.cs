@@ -24,7 +24,7 @@ public class GraphicsOptions : MonoBehaviour {
     void Start () {
 
         graphicsDropDown.value = QualitySettings.GetQualityLevel();
-        setGraphics(PlayerPrefs.GetInt("Graphics", 1));
+        setGraphics(PlayerPrefs.GetInt("Graphics", 2));
         float scale = PlayerPrefs.GetFloat("ResolutionScale", 1f);
         float width = Display.main.systemWidth * scale;
         float height = Display.main.systemHeight * scale;
@@ -116,7 +116,9 @@ public class GraphicsOptions : MonoBehaviour {
             case 2:
                 PlayerPrefs.SetInt("LimitFPS", 120);
                 break;
-        }      
+        }
+        Application.targetFrameRate = PlayerPrefs.GetInt("LimitFPS", 30);
+
     }
 
     public void ShowFPS() {

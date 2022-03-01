@@ -3272,7 +3272,7 @@ MonoBehaviour:
   fpsDropDown: {fileID: 0}
   showFPSToggle: {fileID: 0}
   renderLevels:
-  - {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: d847b876476d3d6468f5dfcd34266f96, type: 2}
   - {fileID: 11400000, guid: a31e9f9f9c9d4b9429ed0d1234e22103, type: 2}
   resolutionSlider: {fileID: 0}
@@ -11683,7 +11683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -392, y: 521262.78}
+  m_AnchoredPosition: {x: -392, y: 531109}
   m_SizeDelta: {x: 800, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &233705718
@@ -85192,7 +85192,8 @@ MonoBehaviour:
   fpsDropDown: {fileID: 730895315}
   showFPSToggle: {fileID: 1646353291}
   renderLevels:
-  - {fileID: 11400000, guid: 19ba41d7c0026c3459d37c2fe90c55a0, type: 2}
+  - {fileID: 11400000, guid: 8625c27b8ebed1f4a8cefe58366cf793, type: 2}
+  - {fileID: 11400000, guid: 50030d3bd3231dc45a508f18da3b7696, type: 2}
   - {fileID: 11400000, guid: d847b876476d3d6468f5dfcd34266f96, type: 2}
   - {fileID: 11400000, guid: a31e9f9f9c9d4b9429ed0d1234e22103, type: 2}
   resolutionSlider: {fileID: 2014296058}
@@ -102453,9 +102454,11 @@ MonoBehaviour:
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 1922053940}
   m_ItemImage: {fileID: 0}
-  m_Value: 1
+  m_Value: 2
   m_Options:
     m_Options:
+    - m_Text: Ultra High
+      m_Image: {fileID: 0}
     - m_Text: High
       m_Image: {fileID: 0}
     - m_Text: Medium
